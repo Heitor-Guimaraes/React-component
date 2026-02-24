@@ -1,20 +1,28 @@
 import './index.css';
 import ProductCard from './components/card/ProductCard';
 import { useState, useEffect } from 'react';
+import Pokecard from './components/card/PokeCard';
 
 function App() {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products/3")
+    fetch("https://pokeapi.co/api/v2/pokemon/mewtwo")
       .then(response => response.json())
       .then(data => setData(data))
   }, []);
 
   return (
     <>
+
+      <Pokecard 
+      image={data.sprites?.front_default}
+      name={data.name}
+      type={data.types?.[0]?.type?.name}
+      />
+  
       <div className="App">
-        {data.title && (
+        {/* {data.title && (
           <ProductCard
             title={data.title}
             price={data.price}
@@ -22,7 +30,7 @@ function App() {
             description={data.description}
             category={data.category}
           />
-        )}
+        )} */}
         <ProductCard
           title="iPhone 15 Pro"
           price={5000}
