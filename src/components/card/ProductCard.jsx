@@ -1,10 +1,12 @@
 import React from 'react';
 import './ProductCard.css';
 
-function ProductCard({ title, price, image, description, category }) {
+export default function ProductCard({ title, price, image, description, category }) {
   return (
     <div className="product-card">
-      <img src={image} alt={title} />
+      <div className="product-image-container">
+        <img src={image} alt={title} className="product-image" />
+      </div>
       <div className="product-content">
         <span className="product-category">{category}</span>
         <h3 className="product-title">{title}</h3>
@@ -15,4 +17,4 @@ function ProductCard({ title, price, image, description, category }) {
   );
 }
 
-export default ProductCard;
+
